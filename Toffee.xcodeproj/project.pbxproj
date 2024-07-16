@@ -15,6 +15,8 @@
 		109D4AFB2C46D29600C34C38 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AFA2C46D29600C34C38 /* NavigationBar.swift */; };
 		109D4AFD2C46D32800C34C38 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AFC2C46D32800C34C38 /* SearchView.swift */; };
 		109D4AFF2C46D34400C34C38 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AFE2C46D34400C34C38 /* ProfileView.swift */; };
+		109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4B002C46D3B300C34C38 /* NotificationView.swift */; };
+		109D4B042C46FA3000C34C38 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4B032C46FA3000C34C38 /* DataModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		109D4AFA2C46D29600C34C38 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
 		109D4AFC2C46D32800C34C38 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 		109D4AFE2C46D34400C34C38 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		109D4B002C46D3B300C34C38 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
+		109D4B032C46FA3000C34C38 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +63,7 @@
 		109D4AE72C46D02E00C34C38 /* Toffee */ = {
 			isa = PBXGroup;
 			children = (
+				109D4B022C46FA0D00C34C38 /* Model */,
 				109D4AF92C46D27B00C34C38 /* UIFeatures */,
 				109D4AF62C46D16100C34C38 /* View */,
 				109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */,
@@ -81,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				109D4AF72C46D17C00C34C38 /* ListView.swift */,
+				109D4B002C46D3B300C34C38 /* NotificationView.swift */,
 				109D4AFE2C46D34400C34C38 /* ProfileView.swift */,
 				109D4AFC2C46D32800C34C38 /* SearchView.swift */,
 			);
@@ -93,6 +99,14 @@
 				109D4AFA2C46D29600C34C38 /* NavigationBar.swift */,
 			);
 			path = UIFeatures;
+			sourceTree = "<group>";
+		};
+		109D4B022C46FA0D00C34C38 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				109D4B032C46FA3000C34C38 /* DataModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,8 +181,10 @@
 			files = (
 				109D4AFD2C46D32800C34C38 /* SearchView.swift in Sources */,
 				109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */,
+				109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */,
 				109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */,
 				109D4AF82C46D17C00C34C38 /* ListView.swift in Sources */,
+				109D4B042C46FA3000C34C38 /* DataModel.swift in Sources */,
 				109D4AFF2C46D34400C34C38 /* ProfileView.swift in Sources */,
 				109D4AFB2C46D29600C34C38 /* NavigationBar.swift in Sources */,
 			);

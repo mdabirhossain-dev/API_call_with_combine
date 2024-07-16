@@ -9,8 +9,10 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        NavigationLink {
-            ListView()
+        NavigationView {
+            NavigationLink(destination: ListView(), label: {
+                Text("Web Series")
+            })
         }
     }
 }

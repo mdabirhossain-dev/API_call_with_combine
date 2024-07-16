@@ -14,6 +14,7 @@ struct ToolBarModifier: ViewModifier {
     @State var isTitle: Bool
     @State var isSearch: Bool
     @State var isNotification: Bool
+    @State var isProfile: Bool
     
     @Environment(\.presentationMode) var presentation
     
@@ -22,23 +23,20 @@ struct ToolBarModifier: ViewModifier {
             .toolbar {
                 
                 ToolbarItemGroup(placement: .navigationBarLeading) {
-                    if isTitle {
-                        Button{
-                            presentation.wrappedValue.dismiss()
-                        } label: {
-                            Image("arrow-left")
-                        }
-                        
-                        Text(title)
-                            .foregroundColor(Color(ColorString.appIconForeground.rawValue))
-                            .font(.custom(FontManager.Poppins.semiBold, size: 18))
-                            .onTapGesture {
-                                presentation.wrappedValue.dismiss()
-                            }
-                    } else {
-                        Image("gelegele_icon")
-                            .resizable()
+                    Button{
+                        presentation.wrappedValue.dismiss()
+                    } label: {
+                        Image(systemName: "arrow.left")
+                            .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
+                            .font(.system(size: 18, weight: .semibold))
                     }
+                    
+                    Text(title)
+                        .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
+                        .font(.system(size: 18, weight: .semibold))
+                        .onTapGesture {
+                            presentation.wrappedValue.dismiss()
+                        }
                 }
                 
                 ToolbarItemGroup(placement: .navigationBarTrailing) {
@@ -47,8 +45,9 @@ struct ToolBarModifier: ViewModifier {
                             NavigationLink{
                                 SearchView()
                             } label: {
-                                Image("search")
-                                    .foregroundColor(.primary)
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
+                                    .font(.system(size: 18, weight: .semibold))
                             }
                             .buttonStyle(.plain)
                         }
@@ -57,8 +56,20 @@ struct ToolBarModifier: ViewModifier {
                             NavigationLink {
                                 ProfileView()
                             } label: {
-                                Image("notification")
-                                    .foregroundColor(.primary)
+                                Image(systemName: "bell")
+                                    .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
+                                    .font(.system(size: 18, weight: .semibold))
+                            }
+                            .buttonStyle(.plain)
+                        }
+                        
+                        if isProfile {
+                            NavigationLink {
+                                ProfileView()
+                            } label: {
+                                Image(systemName: "person.circle")
+                                    .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
+                                    .font(.system(size: 18, weight: .semibold))
                             }
                             .buttonStyle(.plain)
                         }
@@ -71,7 +82,7 @@ struct ToolBarModifier: ViewModifier {
 }
 
 extension View {
-    func profileNavigationToolbar(title: String, isTitle: Bool, isSearch: Bool, isNotification: Bool) -> some View {
-        return self.modifier(ToolBarModifier(title: title, isTitle: isTitle, isSearch: isSearch, isNotification: isNotification))
+    func navigationToolbar(title: String, isTitle: Bool, isSearch: Bool, isNotification: Bool, isProfile: Bool) -> some View {
+        return self.modifier(ToolBarModifier(title: title, isTitle: isTitle, isSearch: isSearch, isNotification: isNotification, isProfile: isProfile))
     }
 }
