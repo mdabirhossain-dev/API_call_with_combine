@@ -12,6 +12,9 @@ struct ListView: View {
         VStack {
             
         }
+        .profileNavigationToolbar(title: ConstantsProfile.EditProfile.navTitle, isTitle: true, isSearch: true, isNotification: true)
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(false)
     }
 }
 
