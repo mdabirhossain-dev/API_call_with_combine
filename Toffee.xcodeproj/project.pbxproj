@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		101D425C2C47DB2400ABCA90 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */; };
 		109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */; };
 		109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AEA2C46D02E00C34C38 /* ContentView.swift */; };
 		109D4AED2C46D03000C34C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109D4AEC2C46D03000C34C38 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
 		109D4AE52C46D02E00C34C38 /* Toffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToffeeApp.swift; sourceTree = "<group>"; };
 		109D4AEA2C46D02E00C34C38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				109D4AFA2C46D29600C34C38 /* NavigationBar.swift */,
+				101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */,
 			);
 			path = UIFeatures;
 			sourceTree = "<group>";
@@ -185,6 +188,7 @@
 				109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */,
 				109D4AF82C46D17C00C34C38 /* ListView.swift in Sources */,
 				109D4B042C46FA3000C34C38 /* DataModel.swift in Sources */,
+				101D425C2C47DB2400ABCA90 /* ButtonStyle.swift in Sources */,
 				109D4AFF2C46D34400C34C38 /* ProfileView.swift in Sources */,
 				109D4AFB2C46D29600C34C38 /* NavigationBar.swift in Sources */,
 			);
