@@ -16,6 +16,17 @@ struct ListView: View {
     @State private var selectedCategory = "All"
     @State private var selectedCategoryIndex = 0
     
+    var filteredData: [DataModel] {
+        withAnimation {
+            if selectedCategory == "All" {
+                return dataModel
+            } else {
+                return dataModel.filter { ($0.catFilterStr).localizedCaseInsensitiveContains(selectedCategory)
+                }
+            }
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color(red: 17/255, green: 31/255, blue: 49/255)
@@ -56,8 +67,8 @@ struct ListView: View {
                 VStack {
                     ScrollView(.vertical, showsIndicators: false) {
                         LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(0 ..< dataModel.count, id: \.self) { index in
-                                SeriesCellView(data: dataModel[index])
+                            ForEach(0 ..< filteredData.count, id: \.self) { index in
+                                SeriesCellView(data: filteredData[index])
                                     .onTapGesture {
                                         print("Index: \(index)")
                                     }
