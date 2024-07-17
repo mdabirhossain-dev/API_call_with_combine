@@ -37,28 +37,15 @@ struct ListView: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
                             ForEach(0 ..< categories.count, id: \.self) { index in
-                                Button(action: {
-                                    print("")
+                                Button(categories[index]) {
+                                    print("Selected cat: \(categories[index])")
                                     withAnimation {
                                         selectedCategory = categories[index]
                                         selectedCategoryIndex = index
                                     }
-                                }, label: {
-                                    Text(categories[index])
-                                        .foregroundColor(.white)
-                                        .frame(height: 30)
-                                        .padding(.horizontal, 15)
-                                        .padding(.vertical, 5)
-                                        .padding(.bottom, 3)
-                                        .overlay(
-                                            RoundedRectangle(cornerRadius: 20)
-                                                .stroke(Color(red: 41/255, green: 70/255, blue: 107/255), lineWidth: 3)
-                                        )
-                                        .background(
-                                            selectedCategoryIndex == index ? Color(red: 41/255, green: 70/255, blue: 107/255) : Color.clear
-                                        )
-                                        .cornerRadius(20)
-                                })
+                                }
+                                .buttonStyle(CategoryButtonStyle(isSelected: selectedCategoryIndex == index ? true : false))
+                                
                             }
                         }
                         .padding([.top, .leading, .bottom], 8)
@@ -69,7 +56,7 @@ struct ListView: View {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVGrid(columns: columns, spacing: 20) {
                                 ForEach(0 ..< filteredData.count, id: \.self) { index in
-                                    SeriesCellView(data: filteredData[index])
+                                    SeriesCellView(data: filteredData[index], height: geo.size.width / 3.7)
                                         .onTapGesture {
                                             print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
                                         }
@@ -89,13 +76,13 @@ struct ListView: View {
     }
     
     @ViewBuilder
-    func SeriesCellView(data: DataModel) -> some View {
+    func SeriesCellView(data: DataModel, height: CGFloat) -> some View {
         VStack(alignment: .center, spacing: 8) {
             ZStack(alignment: .center) {
                 Image(data.imageName)
                     .resizable()
                     .frame(maxWidth: .infinity)
-                    .frame(height: 100)
+                    .frame(height: height)
                     .cornerRadius(2)
                     .overlay (
                         VStack(alignment: .center) {
@@ -116,7 +103,10 @@ struct ListView: View {
             HStack(alignment: .top, spacing: 10) {
                 Text(data.title)
                     .font(.system(size: 14, weight: .semibold))
+                    .multilineTextAlignment(.leading)
                     .lineLimit(2)
+                
+//                Spacer(minLength: 5)
                 
                 Image(systemName: "ellipsis")
                     .font(.system(size: 14, weight: .semibold))
