@@ -17,7 +17,7 @@ struct DataModel {
 }
 
 let dataModel: [DataModel] = [
-    DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img0", catFilterStr: "Thriller", duration: "13h", totalEpisode: "60"),
+    DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img18", catFilterStr: "Thriller", duration: "13h", totalEpisode: "60"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img1", catFilterStr: "Comedy", duration: "13h", totalEpisode: "56"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img2", catFilterStr: "Romance", duration: "13h", totalEpisode: "56"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img3", catFilterStr: "Drama", duration: "13h", totalEpisode: "33"),
@@ -35,7 +35,7 @@ let dataModel: [DataModel] = [
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img15", catFilterStr: "Romance", duration: "13h", totalEpisode: "11"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img16", catFilterStr: "Horror", duration: "13h", totalEpisode: "29"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img17", catFilterStr: "Action", duration: "13h", totalEpisode: "10"),
-    DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img18", catFilterStr: "Romance", duration: "13h", totalEpisode: "22"),
+    DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img0", catFilterStr: "Romance", duration: "13h", totalEpisode: "22"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img19", catFilterStr: "Horror", duration: "13h", totalEpisode: "56"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img20", catFilterStr: "Romance", duration: "13h", totalEpisode: "26"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img21", catFilterStr: "Action", duration: "13h", totalEpisode: "56"),
