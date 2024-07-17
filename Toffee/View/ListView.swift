@@ -28,58 +28,60 @@ struct ListView: View {
     }
     
     var body: some View {
-        ZStack {
-            Color(red: 17/255, green: 31/255, blue: 49/255)
-                .ignoresSafeArea(edges: .all)
-            
-            VStack(spacing: 0) {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 15) {
-                        ForEach(0 ..< categories.count, id: \.self) { index in
-                            Button(action: {
-                                print("")
-                                withAnimation {
-                                    selectedCategory = categories[index]
-                                    selectedCategoryIndex = index
-                                }
-                            }, label: {
-                                Text(categories[index])
-                                    .foregroundColor(.white)
-                                    .frame(height: 30)
-                                    .padding(.horizontal, 15)
-                                    .padding(.vertical, 5)
-                                    .padding(.bottom, 3)
-                                    .overlay(
-                                        RoundedRectangle(cornerRadius: 20)
-                                            .stroke(Color(red: 41/255, green: 70/255, blue: 107/255), lineWidth: 3)
-                                    )
-                                    .background(
-                                        selectedCategoryIndex == index ? Color(red: 41/255, green: 70/255, blue: 107/255) : Color.clear
-                                    )
-                                    .cornerRadius(20)
-                            })
-                        }
-                    }
-                    .padding([.top, .leading, .bottom], 8)
-                }
-                .background(Color.black)
+        GeometryReader { geo in
+            ZStack {
+                Color(red: 17/255, green: 31/255, blue: 49/255)
+                    .ignoresSafeArea(edges: .all)
                 
-                VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        LazyVGrid(columns: columns, spacing: 20) {
-                            ForEach(0 ..< filteredData.count, id: \.self) { index in
-                                SeriesCellView(data: filteredData[index])
-                                    .onTapGesture {
-                                        print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
+                VStack(spacing: 0) {
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 15) {
+                            ForEach(0 ..< categories.count, id: \.self) { index in
+                                Button(action: {
+                                    print("")
+                                    withAnimation {
+                                        selectedCategory = categories[index]
+                                        selectedCategoryIndex = index
                                     }
+                                }, label: {
+                                    Text(categories[index])
+                                        .foregroundColor(.white)
+                                        .frame(height: 30)
+                                        .padding(.horizontal, 15)
+                                        .padding(.vertical, 5)
+                                        .padding(.bottom, 3)
+                                        .overlay(
+                                            RoundedRectangle(cornerRadius: 20)
+                                                .stroke(Color(red: 41/255, green: 70/255, blue: 107/255), lineWidth: 3)
+                                        )
+                                        .background(
+                                            selectedCategoryIndex == index ? Color(red: 41/255, green: 70/255, blue: 107/255) : Color.clear
+                                        )
+                                        .cornerRadius(20)
+                                })
                             }
                         }
-                        .padding(.horizontal, 20)
+                        .padding([.top, .leading, .bottom], 8)
+                    }
+                    .background(Color.black)
+                    
+                    VStack {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVGrid(columns: columns, spacing: 20) {
+                                ForEach(0 ..< filteredData.count, id: \.self) { index in
+                                    SeriesCellView(data: filteredData[index])
+                                        .onTapGesture {
+                                            print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
+                                        }
+                                }
+                            }
+                            .padding(.horizontal, 20)
+                        }
                     }
                 }
+                .background(Color.black)
+                .padding(.top, 1)
             }
-            .background(Color.black)
-            .padding(.top, 1)
         }
         .navigationToolbar(title: "Web Series", isTitle: true, isSearch: true, isNotification: true, isProfile: true)
         .navigationBarBackButtonHidden(true)
