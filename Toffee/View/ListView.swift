@@ -112,9 +112,7 @@ struct ListView: View {
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Menu {
-                    Button {
-                        print("Share button tapped...")
-                    } label: {
+                    ShareLink(item: URL(string: data.videoURL) ?? URL(string: "https://viterbischool.usc.edu/wp-content/uploads/2023/10/404.jpg")!) {
                         Label("Share to Others", systemImage: "square.and.arrow.up")
                     }
                     
