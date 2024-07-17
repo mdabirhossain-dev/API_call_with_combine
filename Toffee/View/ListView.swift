@@ -85,15 +85,16 @@ struct ListView: View {
                     .frame(height: height)
                     .cornerRadius(2)
                     .overlay (
-                        VStack(alignment: .center) {
+                        VStack(alignment: .center, spacing: 8) {
                             Image(systemName: "play.rectangle.on.rectangle")
                                 .font(.system(size: 18))
                             
                             Text("\(data.totalEpisode) Episodes")
                                 .font(.system(size: 10, weight: .semibold))
+                                .multilineTextAlignment(.center)
                         }
                             .foregroundColor(Color.white)
-                            .frame(width: 70)
+                            .frame(width: height / 1.6)
                             .frame(maxHeight: .infinity)
                             .background(Color.black.opacity(0.4))
                         , alignment: .trailing
@@ -103,15 +104,25 @@ struct ListView: View {
             HStack(alignment: .top, spacing: 10) {
                 Text(data.title)
                     .font(.system(size: 14, weight: .semibold))
-                    .multilineTextAlignment(.leading)
                     .lineLimit(2)
-                
-//                Spacer(minLength: 5)
-                
-                Image(systemName: "ellipsis")
-                    .font(.system(size: 14, weight: .semibold))
-                    .rotationEffect(.degrees(90))
-                    .padding(.top, 8)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                Menu {
+                    Button {
+                        print("Save button tapped...")
+                    } label: {
+                        Label("Save", systemImage: "sdcard")
+                    }
+                    Button {
+                        print("Delete button tapped...")
+                    } label: {
+                        Label("Delete", systemImage: "trash")
+                    }
+                } label: {
+                    Image(systemName: "ellipsis")
+                        .font(.system(size: 14, weight: .semibold))
+                        .rotationEffect(.degrees(90))
+                        .padding(8)
+                }
             }
             .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
             
