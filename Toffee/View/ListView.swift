@@ -70,7 +70,7 @@ struct ListView: View {
                             ForEach(0 ..< filteredData.count, id: \.self) { index in
                                 SeriesCellView(data: filteredData[index])
                                     .onTapGesture {
-                                        print("Index: \(index)")
+                                        print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
                                     }
                             }
                         }
@@ -111,7 +111,7 @@ struct ListView: View {
                     )
             }
             
-            HStack(spacing: 10) {
+            HStack(alignment: .top, spacing: 10) {
                 Text(data.title)
                     .font(.system(size: 14, weight: .semibold))
                     .lineLimit(2)
@@ -119,8 +119,8 @@ struct ListView: View {
                 Image(systemName: "ellipsis")
                     .font(.system(size: 14, weight: .semibold))
                     .rotationEffect(.degrees(90))
+                    .padding(.top, 8)
             }
-            .frame(alignment: .top)
             .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
             
             Text("Toffee • \(data.duration)")
