@@ -113,15 +113,22 @@ struct ListView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Menu {
                     Button {
+                        print("Share button tapped...")
+                    } label: {
+                        Label("Share to Others", systemImage: "square.and.arrow.up")
+                    }
+                    
+                    Button {
                         print("Save button tapped...")
                     } label: {
-                        Label("Save", systemImage: "sdcard")
+                        Label("Save to Favourite", systemImage: "sdcard")
                     }
                     
                     Button {
                         if let index = dataModel.firstIndex(of: data) {
                             dataModel.remove(at: index)
                         }
+                        
                         isHide.toggle()
                         DispatchQueue.main.asyncAfter(deadline: .now() + 0.0009) {
                             isHide.toggle()
@@ -129,7 +136,7 @@ struct ListView: View {
                         
                         print("Delete button tapped...")
                     } label: {
-                        Label("Delete", systemImage: "trash")
+                        Label("Delete from List", systemImage: "trash")
                     }
                 } label: {
                     Image(systemName: "ellipsis")
