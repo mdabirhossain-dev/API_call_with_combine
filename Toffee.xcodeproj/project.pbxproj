@@ -63,9 +63,9 @@
 		109D4AE72C46D02E00C34C38 /* Toffee */ = {
 			isa = PBXGroup;
 			children = (
-				109D4B022C46FA0D00C34C38 /* Model */,
 				109D4AF92C46D27B00C34C38 /* UIFeatures */,
 				109D4AF62C46D16100C34C38 /* View */,
+				109D4B022C46FA0D00C34C38 /* Model */,
 				109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */,
 				109D4AEA2C46D02E00C34C38 /* ContentView.swift */,
 				109D4AEC2C46D03000C34C38 /* Assets.xcassets */,
