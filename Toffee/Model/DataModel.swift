@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct DataModel {
+struct DataModel: Equatable {
     let id = UUID()
     let title: String
     let imageName: String
@@ -16,7 +16,7 @@ struct DataModel {
     let totalEpisode: String
 }
 
-let dataModel: [DataModel] = [
+var dataModel: [DataModel] = [
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img18", catFilterStr: "Thriller", duration: "13h", totalEpisode: "60"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img1", catFilterStr: "Comedy", duration: "13h", totalEpisode: "56"),
     DataModel(title: "Sapien urna cum hac portitor netus e eges otog khuj kgumo", imageName: "img2", catFilterStr: "Romance", duration: "13h", totalEpisode: "56"),

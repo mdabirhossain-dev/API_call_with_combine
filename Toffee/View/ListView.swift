@@ -15,6 +15,8 @@ struct ListView: View {
     let categories = ["All", "Thriller", "Romance", "Comedy", "Horror", "Drama", "Action"]
     @State private var selectedCategory = "All"
     @State private var selectedCategoryIndex = 0
+    @State private var data: [DataModel] = []
+    @State private var isHide = true
     
     var filteredData: [DataModel] {
         withAnimation {
@@ -53,18 +55,21 @@ struct ListView: View {
                     .background(Color.black)
                     
                     VStack {
-                        ScrollView(.vertical, showsIndicators: false) {
-                            LazyVGrid(columns: columns, spacing: 20) {
-                                ForEach(0 ..< filteredData.count, id: \.self) { index in
-                                    SeriesCellView(data: filteredData[index], height: geo.size.width / 3.7)
-                                        .onTapGesture {
-                                            print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
-                                        }
+                        if isHide {
+                            ScrollView(.vertical, showsIndicators: false) {
+                                LazyVGrid(columns: columns, spacing: 20) {
+                                    ForEach(0 ..< filteredData.count, id: \.self) { index in
+                                        SeriesCellView(data: filteredData[index], height: geo.size.width / 3.7)
+                                            .onTapGesture {
+                                                print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
+                                            }
+                                    }
                                 }
+                                .padding(.horizontal, 20)
                             }
-                            .padding(.horizontal, 20)
                         }
                     }
+                    Spacer()
                 }
                 .background(Color.black)
                 .padding(.top, 1)
@@ -112,7 +117,16 @@ struct ListView: View {
                     } label: {
                         Label("Save", systemImage: "sdcard")
                     }
+                    
                     Button {
+                        if let index = dataModel.firstIndex(of: data) {
+                            dataModel.remove(at: index)
+                        }
+                        isHide.toggle()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0009) {
+                            isHide.toggle()
+                        }
+                        
                         print("Delete button tapped...")
                     } label: {
                         Label("Delete", systemImage: "trash")

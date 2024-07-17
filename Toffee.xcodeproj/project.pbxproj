@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		101D425C2C47DB2400ABCA90 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */; };
+		101D425F2C481A2600ABCA90 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425E2C481A2600ABCA90 /* DataViewModel.swift */; };
 		109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */; };
 		109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AEA2C46D02E00C34C38 /* ContentView.swift */; };
 		109D4AED2C46D03000C34C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109D4AEC2C46D03000C34C38 /* Assets.xcassets */; };
@@ -22,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		101D425E2C481A2600ABCA90 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 		109D4AE52C46D02E00C34C38 /* Toffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToffeeApp.swift; sourceTree = "<group>"; };
 		109D4AEA2C46D02E00C34C38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		101D425D2C481A0E00ABCA90 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				101D425E2C481A2600ABCA90 /* DataViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		109D4ADC2C46D02E00C34C38 = {
 			isa = PBXGroup;
 			children = (
@@ -66,8 +76,9 @@
 			isa = PBXGroup;
 			children = (
 				109D4AF92C46D27B00C34C38 /* UIFeatures */,
-				109D4AF62C46D16100C34C38 /* View */,
 				109D4B022C46FA0D00C34C38 /* Model */,
+				109D4AF62C46D16100C34C38 /* View */,
+				101D425D2C481A0E00ABCA90 /* ViewModel */,
 				109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */,
 				109D4AEA2C46D02E00C34C38 /* ContentView.swift */,
 				109D4AEC2C46D03000C34C38 /* Assets.xcassets */,
@@ -186,6 +197,7 @@
 				109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */,
 				109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */,
 				109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */,
+				101D425F2C481A2600ABCA90 /* DataViewModel.swift in Sources */,
 				109D4AF82C46D17C00C34C38 /* ListView.swift in Sources */,
 				109D4B042C46FA3000C34C38 /* DataModel.swift in Sources */,
 				101D425C2C47DB2400ABCA90 /* ButtonStyle.swift in Sources */,
