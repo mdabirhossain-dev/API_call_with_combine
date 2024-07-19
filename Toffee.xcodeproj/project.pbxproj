@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		101D425C2C47DB2400ABCA90 /* ButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */; };
+		101D425C2C47DB2400ABCA90 /* CategoryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */; };
 		109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */; };
 		109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AEA2C46D02E00C34C38 /* ContentView.swift */; };
 		109D4AED2C46D03000C34C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109D4AEC2C46D03000C34C38 /* Assets.xcassets */; };
@@ -18,10 +18,11 @@
 		109D4AFF2C46D34400C34C38 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AFE2C46D34400C34C38 /* ProfileView.swift */; };
 		109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4B002C46D3B300C34C38 /* NotificationView.swift */; };
 		109D4B042C46FA3000C34C38 /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4B032C46FA3000C34C38 /* DataModel.swift */; };
+		10A73EAA2C495A87008EE173 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A73EA92C495A87008EE173 /* DataViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonStyle.swift; sourceTree = "<group>"; };
+		101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonStyle.swift; sourceTree = "<group>"; };
 		109D4AE52C46D02E00C34C38 /* Toffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToffeeApp.swift; sourceTree = "<group>"; };
 		109D4AEA2C46D02E00C34C38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 		109D4AFE2C46D34400C34C38 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		109D4B002C46D3B300C34C38 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		109D4B032C46FA3000C34C38 /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
+		10A73EA92C495A87008EE173 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,9 +67,10 @@
 		109D4AE72C46D02E00C34C38 /* Toffee */ = {
 			isa = PBXGroup;
 			children = (
-				109D4AF92C46D27B00C34C38 /* UIFeatures */,
 				109D4B022C46FA0D00C34C38 /* Model */,
 				109D4AF62C46D16100C34C38 /* View */,
+				10A73EA82C495A6D008EE173 /* ViewModel */,
+				109D4AF92C46D27B00C34C38 /* UIFeatures */,
 				109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */,
 				109D4AEA2C46D02E00C34C38 /* ContentView.swift */,
 				109D4AEC2C46D03000C34C38 /* Assets.xcassets */,
@@ -99,7 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				109D4AFA2C46D29600C34C38 /* NavigationBar.swift */,
-				101D425B2C47DB2400ABCA90 /* ButtonStyle.swift */,
+				101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */,
 			);
 			path = UIFeatures;
 			sourceTree = "<group>";
@@ -110,6 +113,14 @@
 				109D4B032C46FA3000C34C38 /* DataModel.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		10A73EA82C495A6D008EE173 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				10A73EA92C495A87008EE173 /* DataViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,9 +197,10 @@
 				109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */,
 				109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */,
 				109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */,
+				10A73EAA2C495A87008EE173 /* DataViewModel.swift in Sources */,
 				109D4AF82C46D17C00C34C38 /* ListView.swift in Sources */,
 				109D4B042C46FA3000C34C38 /* DataModel.swift in Sources */,
-				101D425C2C47DB2400ABCA90 /* ButtonStyle.swift in Sources */,
+				101D425C2C47DB2400ABCA90 /* CategoryButtonStyle.swift in Sources */,
 				109D4AFF2C46D34400C34C38 /* ProfileView.swift in Sources */,
 				109D4AFB2C46D29600C34C38 /* NavigationBar.swift in Sources */,
 			);
@@ -249,7 +261,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -306,7 +318,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
