@@ -19,7 +19,7 @@ struct SeriesCellView: View {
     var body: some View {
         VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .center) {
-//                Image(data.image)
+                //                Image(data.image)
                 WebImage(url: URL(string: data.image)) { image in
                     image
                         .resizable()

@@ -46,12 +46,12 @@ class DataViewModel: ObservableObject {
     func incrementArray() -> [Int] {
         var arr: [Int] = []
         var incrementFrom = lastArrPosition
-        for _ in 0...9 {
+        for _ in 1...12 {
             arr.append(incrementFrom)
             incrementFrom += 1
         }
         
-        self.lastArrPosition += 10
+        self.lastArrPosition += 12
         return arr
     }
     
