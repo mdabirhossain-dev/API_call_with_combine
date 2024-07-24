@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct ListView: View {
     let columns = [
@@ -13,21 +14,27 @@ struct ListView: View {
             GridItem(.flexible())
         ]
     let categories = ["All", "Thriller", "Romance", "Comedy", "Horror", "Drama", "Action"]
+    @StateObject var dataVM = DataViewModel()
     @State private var selectedCategory = "All"
     @State private var selectedCategoryIndex = 0
-    @State private var data: [DataModel] = []
+    @State private var dataResponse: [DataResponse] = []
     @State private var isHide = true
     
-    var filteredData: [DataModel] {
+    var filteredData: [DataResponse] {
         withAnimation {
             if selectedCategory == "All" {
-                return dataModel
+                return dataResponse
             } else {
-                return dataModel.filter { ($0.catFilterStr).localizedCaseInsensitiveContains(selectedCategory)
+                return dataResponse.filter { ($0.status).localizedCaseInsensitiveContains(selectedCategory)
                 }
             }
         }
     }
+    
+    @State private var readToEnd = false
+    @State private var scrollViewHeight = CGFloat.infinity
+    
+    @Namespace private var scrollViewNameSpace
     
     var body: some View {
         GeometryReader { geo in
@@ -54,26 +61,44 @@ struct ListView: View {
                     }
                     .background(Color.black)
                     
-                    VStack {
-                        if isHide {
-                            ScrollView(.vertical, showsIndicators: false) {
-                                LazyVGrid(columns: columns, spacing: 20) {
-                                    ForEach(0 ..< filteredData.count, id: \.self) { index in
-                                        SeriesCellView(data: filteredData[index], height: geo.size.width / 3.7)
-                                            .onTapGesture {
-                                                print("Index: \(index), Cat: \(filteredData[index].catFilterStr)")
+                    VStack(alignment: .center) {
+                        ScrollView(.vertical, showsIndicators: false) {
+                            LazyVGrid(columns: columns, spacing: 10) {
+                                ForEach(0 ..< dataVM.dataResponse.count, id: \.self) { index in
+                                    SeriesCellView(data: dataVM.dataResponse[index], height: geo.size.width / 3.7)
+                                        .onTapGesture {
+                                            print("Index: \(index),\nCat\(dataVM.dataResponse.count): \(dataVM.dataResponse[index])")
+                                        }
+                                        .onAppear(perform: {
+                                            if index + 1 == dataVM.dataResponse.count {
+                                                dataVM.isLoad = true
+                                                dataVM.fetchData()
+                                                print("GROD")
                                             }
-                                    }
+                                        })
                                 }
-                                .padding(.horizontal, 20)
                             }
+                            .padding(.horizontal, 20)
                         }
                     }
-                    Spacer()
                 }
                 .background(Color.black)
                 .padding(.top, 1)
+                
+                if dataVM.isLoad {
+                    Color.black.opacity(0.5).ignoresSafeArea(edges: .all)
+                    
+                    ProgressView()
+                        .progressViewStyle(CircularProgressViewStyle(tint: Color.red))
+                        .scaleEffect(4)
+                }
             }
+            .onChange(of: dataVM.dataResponse) { _ in
+                dataResponse = dataVM.dataResponse
+            }
+            .onAppear(perform: {
+                dataVM.fetchData()
+            })
         }
         .navigationToolbar(title: "Web Series", isTitle: true, isSearch: true, isNotification: true, isProfile: true)
         .navigationBarBackButtonHidden(true)
@@ -81,38 +106,47 @@ struct ListView: View {
     }
     
     @ViewBuilder
-    func SeriesCellView(data: DataModel, height: CGFloat) -> some View {
-        VStack(alignment: .center, spacing: 8) {
+    func SeriesCellView(data: DataResponse, height: CGFloat) -> some View {
+        VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .center) {
-                Image(data.imageName)
-                    .resizable()
-                    .frame(maxWidth: .infinity)
-                    .frame(height: height)
-                    .cornerRadius(2)
-                    .overlay (
-                        VStack(alignment: .center, spacing: 8) {
-                            Image(systemName: "play.rectangle.on.rectangle")
-                                .font(.system(size: 18))
-                            
-                            Text("\(data.totalEpisode) Episodes")
-                                .font(.system(size: 10, weight: .semibold))
-                                .multilineTextAlignment(.center)
-                        }
-                            .foregroundColor(Color.white)
-                            .frame(width: height / 1.6)
-                            .frame(maxHeight: .infinity)
-                            .background(Color.black.opacity(0.4))
-                        , alignment: .trailing
-                    )
+//                Image(data.image)
+                WebImage(url: URL(string: data.image)) { image in
+                    image
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: height)
+                        .cornerRadius(2)
+                        .overlay (
+                            VStack(alignment: .center, spacing: 8) {
+                                Image(systemName: "play.rectangle.on.rectangle")
+                                    .font(.system(size: 18))
+                                
+                                Text("56 Episodes")
+                                    .font(.system(size: 10, weight: .semibold))
+                                    .multilineTextAlignment(.center)
+                            }
+                                .foregroundColor(Color.white)
+                                .frame(width: height / 1.6)
+                                .frame(maxHeight: .infinity)
+                                .background(Color.black.opacity(0.4))
+                            , alignment: .trailing
+                        )
+                } placeholder: {
+                    Image("noImage")
+                        .resizable()
+                        .frame(maxWidth: .infinity)
+                        .frame(height: height)
+                        .cornerRadius(2)
+                }
             }
             
             HStack(alignment: .top, spacing: 10) {
-                Text(data.title)
+                Text(data.name)
                     .font(.system(size: 14, weight: .semibold))
                     .lineLimit(2)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 Menu {
-                    ShareLink(item: URL(string: data.videoURL) ?? URL(string: "https://viterbischool.usc.edu/wp-content/uploads/2023/10/404.jpg")!) {
+                    ShareLink(item: URL(string: data.image) ?? URL(string: "https://viterbischool.usc.edu/wp-content/uploads/2023/10/404.jpg")!) {
                         Label("Share to Others", systemImage: "square.and.arrow.up")
                     }
                     
@@ -123,8 +157,8 @@ struct ListView: View {
                     }
                     
                     Button {
-                        if let index = dataModel.firstIndex(of: data) {
-                            dataModel.remove(at: index)
+                        if let index = self.dataVM.dataResponse.firstIndex(of: data) {
+                            self.dataVM.dataResponse.remove(at: index)
                         }
                         
                         isHide.toggle()
@@ -144,11 +178,14 @@ struct ListView: View {
                 }
             }
             .foregroundColor(Color(red: 190/255, green: 214/255, blue: 242/255))
+            .padding(.top, 5)
             
-            Text("Toffee • \(data.duration)")
+            Text("Toffee • 2h")
                 .font(.system(size: 14))
                 .foregroundColor(Color(red: 121/255, green: 142/255, blue: 170/255))
                 .frame(maxWidth: .infinity, alignment: .leading)
+            
+            Spacer() // for alignment issue
         }
     }
 }

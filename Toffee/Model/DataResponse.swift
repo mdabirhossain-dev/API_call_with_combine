@@ -1,5 +1,5 @@
 //
-//  DataModel.swift
+//  DataResponse.swift
 //  Toffee
 //
 //  Created by Md Abir Hossain on 17/7/24.
@@ -8,7 +8,8 @@
 import Foundation
 
 
-struct DataResponse: Decodable {
+
+struct DataResponse: Decodable, Equatable {
     let id: Int
     let name, status, species, type: String
     let gender: String
@@ -20,7 +21,7 @@ struct DataResponse: Decodable {
 }
 
 
-struct Location: Decodable {
+struct Location: Decodable, Equatable {
     let name: String
     let url: String
 }

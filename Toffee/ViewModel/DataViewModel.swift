@@ -8,10 +8,12 @@
 import Foundation
 import Combine
 
-@Observable
-class DataViewModel {
+
+class DataViewModel: ObservableObject {
     var lastArrPosition = 0
-    var arrData: [DataResponse] = []
+    @Published var dataResponse: [DataResponse] = []
+    @Published var categories: [String] = []
+    @Published var isLoad = false
     var subscriptions = Set<AnyCancellable>()
     
     func fetchData() {
@@ -32,6 +34,11 @@ class DataViewModel {
                 }
             } receiveValue: { decodedData in
                 self.appendData(decodedData: decodedData)
+                
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.isLoad = false
+//                })
+                print("decodedData: \(decodedData)")
             }
             .store(in: &subscriptions)
     }
@@ -49,8 +56,19 @@ class DataViewModel {
     }
     
     func appendData(decodedData: [DataResponse]) {
-        for index in 0...decodedData.count {
-            self.arrData.append(decodedData[index])
+        for index in 0..<decodedData.count {
+            self.dataResponse.append(decodedData[index])
+            
+            // Adding categories from Status
+            if categories.contains(dataResponse[index].status) {
+                print("Categories already exixt")
+            } else {
+                appendCategories(category: dataResponse[index].status)
+            }
         }
+    }
+    
+    func appendCategories(category: String) {
+        categories.append(category)
     }
 }
