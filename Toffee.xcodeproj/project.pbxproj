@@ -20,6 +20,7 @@
 		109D4B042C46FA3000C34C38 /* DataResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4B032C46FA3000C34C38 /* DataResponse.swift */; };
 		10A73EAA2C495A87008EE173 /* DataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10A73EA92C495A87008EE173 /* DataViewModel.swift */; };
 		10E52AE72C516A4700A20073 /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 10E52AE62C516A4700A20073 /* SDWebImageSwiftUI */; };
+		10E52AEB2C5176D700A20073 /* SeriesCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10E52AEA2C5176D700A20073 /* SeriesCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		109D4B002C46D3B300C34C38 /* NotificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationView.swift; sourceTree = "<group>"; };
 		109D4B032C46FA3000C34C38 /* DataResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResponse.swift; sourceTree = "<group>"; };
 		10A73EA92C495A87008EE173 /* DataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataViewModel.swift; sourceTree = "<group>"; };
+		10E52AEA2C5176D700A20073 /* SeriesCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,7 +74,6 @@
 				109D4B022C46FA0D00C34C38 /* Model */,
 				109D4AF62C46D16100C34C38 /* View */,
 				10A73EA82C495A6D008EE173 /* ViewModel */,
-				109D4AF92C46D27B00C34C38 /* UIFeatures */,
 				109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */,
 				109D4AEA2C46D02E00C34C38 /* ContentView.swift */,
 				109D4AEC2C46D03000C34C38 /* Assets.xcassets */,
@@ -92,10 +93,9 @@
 		109D4AF62C46D16100C34C38 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				109D4AF72C46D17C00C34C38 /* ListView.swift */,
-				109D4B002C46D3B300C34C38 /* NotificationView.swift */,
-				109D4AFE2C46D34400C34C38 /* ProfileView.swift */,
-				109D4AFC2C46D32800C34C38 /* SearchView.swift */,
+				10E52AE92C5176B300A20073 /* SubView */,
+				10E52AE82C5176A100A20073 /* MainView */,
+				109D4AF92C46D27B00C34C38 /* UIFeatures */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -123,6 +123,25 @@
 				10A73EA92C495A87008EE173 /* DataViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		10E52AE82C5176A100A20073 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				109D4AF72C46D17C00C34C38 /* ListView.swift */,
+				109D4B002C46D3B300C34C38 /* NotificationView.swift */,
+				109D4AFE2C46D34400C34C38 /* ProfileView.swift */,
+				109D4AFC2C46D32800C34C38 /* SearchView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		10E52AE92C5176B300A20073 /* SubView */ = {
+			isa = PBXGroup;
+			children = (
+				10E52AEA2C5176D700A20073 /* SeriesCellView.swift */,
+			);
+			path = SubView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +225,7 @@
 				109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */,
 				109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */,
 				10A73EAA2C495A87008EE173 /* DataViewModel.swift in Sources */,
+				10E52AEB2C5176D700A20073 /* SeriesCellView.swift in Sources */,
 				109D4AF82C46D17C00C34C38 /* ListView.swift in Sources */,
 				109D4B042C46FA3000C34C38 /* DataResponse.swift in Sources */,
 				101D425C2C47DB2400ABCA90 /* CategoryButtonStyle.swift in Sources */,
