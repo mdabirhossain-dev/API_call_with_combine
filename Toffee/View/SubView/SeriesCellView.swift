@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SDWebImageSwiftUI
 
 struct SeriesCellView: View {
     
@@ -100,7 +101,7 @@ struct SeriesCellView: View {
                 .foregroundColor(Color(red: 121/255, green: 142/255, blue: 170/255))
                 .frame(maxWidth: .infinity, alignment: .leading)
             
-            Spacer() // for alignment issue
+            Spacer() // for TOP alignment
         }
     }
 }
