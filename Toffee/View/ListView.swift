@@ -15,26 +15,21 @@ struct ListView: View {
         ]
     let categories = ["All", "Thriller", "Romance", "Comedy", "Horror", "Drama", "Action"]
     @StateObject var dataVM = DataViewModel()
-    @State private var selectedCategory = "All"
+    @State private var selectedCategory = ""
     @State private var selectedCategoryIndex = 0
     @State private var dataResponse: [DataResponse] = []
     @State private var isHide = true
     
     var filteredData: [DataResponse] {
         withAnimation {
-            if selectedCategory == "All" {
-                return dataResponse
+            if selectedCategory == "" {
+                return dataVM.dataResponse
             } else {
-                return dataResponse.filter { ($0.status).localizedCaseInsensitiveContains(selectedCategory)
+                return dataVM.dataResponse.filter { ($0.status).localizedCaseInsensitiveContains(selectedCategory)
                 }
             }
         }
     }
-    
-    @State private var readToEnd = false
-    @State private var scrollViewHeight = CGFloat.infinity
-    
-    @Namespace private var scrollViewNameSpace
     
     var body: some View {
         GeometryReader { geo in
@@ -45,11 +40,11 @@ struct ListView: View {
                 VStack(spacing: 0) {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 15) {
-                            ForEach(0 ..< categories.count, id: \.self) { index in
-                                Button(categories[index]) {
-                                    print("Selected cat: \(categories[index])")
+                            ForEach(0 ..< dataVM.categories.count, id: \.self) { index in
+                                Button(dataVM.categories[index]) {
+                                    print("Selected cat: \(dataVM.categories[index])")
                                     withAnimation {
-                                        selectedCategory = categories[index]
+                                        selectedCategory = dataVM.categories[index]
                                         selectedCategoryIndex = index
                                     }
                                 }
@@ -64,13 +59,14 @@ struct ListView: View {
                     VStack(alignment: .center) {
                         ScrollView(.vertical, showsIndicators: false) {
                             LazyVGrid(columns: columns, spacing: 10) {
-                                ForEach(0 ..< dataVM.dataResponse.count, id: \.self) { index in
-                                    SeriesCellView(data: dataVM.dataResponse[index], height: geo.size.width / 3.7)
+                                ForEach(0 ..< filteredData.count, id: \.self) { index in
+                                    SeriesCellView(data: filteredData[index], height: geo.size.width / 3.7)
+                                        .environmentObject(dataVM)
                                         .onTapGesture {
-                                            print("Index: \(index),\nCat\(dataVM.dataResponse.count): \(dataVM.dataResponse[index])")
+                                            print("Index: \(index),\nCat\(filteredData.count): \(filteredData[index])")
                                         }
                                         .onAppear(perform: {
-                                            if index + 1 == dataVM.dataResponse.count {
+                                            if index + 1 == filteredData.count {
                                                 dataVM.isLoad = true
                                                 dataVM.fetchData()
                                                 print("GROD")
@@ -93,9 +89,6 @@ struct ListView: View {
                         .scaleEffect(4)
                 }
             }
-            .onChange(of: dataVM.dataResponse) { _ in
-                dataResponse = dataVM.dataResponse
-            }
             .onAppear(perform: {
                 dataVM.fetchData()
             })
@@ -104,9 +97,22 @@ struct ListView: View {
         .navigationBarBackButtonHidden(true)
         .navigationBarHidden(false)
     }
+}
+
+#Preview {
+    ListView()
+}
+
+
+struct SeriesCellView: View {
     
-    @ViewBuilder
-    func SeriesCellView(data: DataResponse, height: CGFloat) -> some View {
+    @EnvironmentObject var dataVM: DataViewModel
+    let data: DataResponse
+    let height: CGFloat
+    @State private var isLoadSuccess = true
+    @State private var noImage = UIImage(named: "noImage")
+    
+    var body: some View {
         VStack(alignment: .center, spacing: 0) {
             ZStack(alignment: .center) {
 //                Image(data.image)
@@ -132,11 +138,22 @@ struct ListView: View {
                             , alignment: .trailing
                         )
                 } placeholder: {
-                    Image("noImage")
-                        .resizable()
-                        .frame(maxWidth: .infinity)
-                        .frame(height: height)
-                        .cornerRadius(2)
+                    if isLoadSuccess {
+                        ProgressView()
+                            .progressViewStyle(CircularProgressViewStyle(tint: Color.red))
+                            .scaleEffect(1.5)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: height)
+                    } else {
+                        Image(uiImage: noImage!)
+                            .resizable()
+                            .frame(maxWidth: .infinity)
+                            .frame(height: height)
+                            .cornerRadius(2)
+                    }
+                }
+                .onFailure { _ in
+                    isLoadSuccess = false
                 }
             }
             
@@ -161,11 +178,6 @@ struct ListView: View {
                             self.dataVM.dataResponse.remove(at: index)
                         }
                         
-                        isHide.toggle()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.0009) {
-                            isHide.toggle()
-                        }
-                        
                         print("Delete button tapped...")
                     } label: {
                         Label("Delete from List", systemImage: "trash")
@@ -188,8 +200,4 @@ struct ListView: View {
             Spacer() // for alignment issue
         }
     }
-}
-
-#Preview {
-    ListView()
 }
