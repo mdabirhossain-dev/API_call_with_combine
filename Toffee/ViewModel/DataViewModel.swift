@@ -33,11 +33,10 @@ class DataViewModel: ObservableObject {
                         print("Fetched DATA")
                 }
             } receiveValue: { decodedData in
-                self.appendData(decodedData: decodedData)
-                
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5, execute: {
+                    self.appendData(decodedData: decodedData)
                     self.isLoad = false
-//                })
+                })
                 print("decodedData: \(decodedData)")
             }
             .store(in: &subscriptions)
