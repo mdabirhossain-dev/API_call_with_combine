@@ -12,7 +12,7 @@ import Combine
 class DataViewModel: ObservableObject {
     var lastArrPosition = 0
     @Published var dataResponse: [DataResponse] = []
-    @Published var categories: [String] = []
+    @Published var categories: [String] = ["All"]
     @Published var isLoad = false
     var subscriptions = Set<AnyCancellable>()
     
@@ -45,12 +45,12 @@ class DataViewModel: ObservableObject {
     func incrementArray() -> [Int] {
         var arr: [Int] = []
         var incrementFrom = lastArrPosition
-        for _ in 1...12 {
+        for _ in 1...10 {
             arr.append(incrementFrom)
             incrementFrom += 1
         }
         
-        self.lastArrPosition += 12
+        self.lastArrPosition += 10
         return arr
     }
     

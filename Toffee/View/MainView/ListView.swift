@@ -14,7 +14,7 @@ struct ListView: View {
         ]
     let categories = ["All", "Thriller", "Romance", "Comedy", "Horror", "Drama", "Action"]
     @StateObject var dataVM = DataViewModel()
-    @State private var selectedCategory = ""
+    @State private var selectedCategory = "All"
     @State private var selectedCategoryIndex = 0
     @State private var dataResponse: [DataResponse] = []
     @State private var isHide = true
@@ -24,7 +24,7 @@ struct ListView: View {
     
     var filteredData: [DataResponse] {
         withAnimation {
-            if selectedCategory == "" {
+            if selectedCategory == "All" {
                 return dataVM.dataResponse
             } else {
                 return dataVM.dataResponse.filter { ($0.status).localizedCaseInsensitiveContains(selectedCategory)
