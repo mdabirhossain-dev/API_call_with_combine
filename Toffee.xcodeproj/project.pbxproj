@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		101D425C2C47DB2400ABCA90 /* CategoryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */; };
 		106CA8A32C574D1B00D2A886 /* ListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CA8A22C574D1B00D2A886 /* ListView2.swift */; };
+		106CA8A62C578E6400D2A886 /* MenuButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CA8A52C578E6400D2A886 /* MenuButtonStyle.swift */; };
 		109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */; };
 		109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AEA2C46D02E00C34C38 /* ContentView.swift */; };
 		109D4AED2C46D03000C34C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109D4AEC2C46D03000C34C38 /* Assets.xcassets */; };
@@ -27,6 +28,7 @@
 /* Begin PBXFileReference section */
 		101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonStyle.swift; sourceTree = "<group>"; };
 		106CA8A22C574D1B00D2A886 /* ListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView2.swift; sourceTree = "<group>"; };
+		106CA8A52C578E6400D2A886 /* MenuButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuButtonStyle.swift; sourceTree = "<group>"; };
 		109D4AE52C46D02E00C34C38 /* Toffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToffeeApp.swift; sourceTree = "<group>"; };
 		109D4AEA2C46D02E00C34C38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		106CA8A42C578D3700D2A886 /* CustomMenuButtonUI */ = {
+			isa = PBXGroup;
+			children = (
+				106CA8A52C578E6400D2A886 /* MenuButtonStyle.swift */,
+			);
+			path = CustomMenuButtonUI;
+			sourceTree = "<group>";
+		};
 		109D4ADC2C46D02E00C34C38 = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +105,7 @@
 		109D4AF62C46D16100C34C38 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				106CA8A42C578D3700D2A886 /* CustomMenuButtonUI */,
 				10E52AE92C5176B300A20073 /* SubView */,
 				10E52AE82C5176A100A20073 /* MainView */,
 				109D4AF92C46D27B00C34C38 /* UIFeatures */,
@@ -223,6 +234,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				106CA8A62C578E6400D2A886 /* MenuButtonStyle.swift in Sources */,
 				109D4AFD2C46D32800C34C38 /* SearchView.swift in Sources */,
 				109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */,
 				109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */,
