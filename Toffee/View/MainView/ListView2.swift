@@ -1,17 +1,17 @@
 //
-//  ListView.swift
+//  ListView2.swift
 //  Toffee
 //
-//  Created by Md Abir Hossain on 16/7/24.
+//  Created by Md Abir Hossain on 29/7/24.
 //
 
 import SwiftUI
 
-struct ListView: View {
+struct ListView2: View {
     let columns = [
-            GridItem(.flexible()),
-            GridItem(.flexible())
-        ]
+        GridItem(.flexible()),
+        GridItem(.flexible())
+    ]
     
     @EnvironmentObject var dataVM: DataViewModel
     @State private var selectedCategory = "All"
@@ -73,78 +73,55 @@ struct ListView: View {
                                             .onTapGesture {
                                                 print("Index: \(index),\nCat\(filteredData.count): \(filteredData[index])")
                                             }
-                                            .onAppear(perform: {
-                                                if isLastCell(index: index) {
-                                                    dataVM.isLoad = true
-                                                    dataVM.fetchData()
-                                                    print("GROD")
-                                                }
-                                            })
                                     }
                                 }
-                                .gesture(
-                                    DragGesture(minimumDistance: 1.0, coordinateSpace: .local)
-                                        .onEnded { value in
-                                            print(value.translation)
-                                            switch(value.translation.width, value.translation.height) {
-                                                case (...0, -30...30):
-                                                    print("left swipe")
-                                                case (0..., -30...30):
-                                                    print("right swipe")
-                                                case (-100...100, ...0):
-                                                    dataVM.isLoad = true
-                                                    dataVM.fetchData()
-                                                    print("GROD")
-                                                    print("up swipe")
-                                                case (-100...100, 0...):
-                                                    print("down swipe")
-                                                default:  print("no clue")
+                                .padding(.horizontal, 20)
+                                
+                                /// Infinity Scroll...
+                                if dataVM.offset == dataVM.dataResponse.count {
+                                    ProgressView()
+                                        .progressViewStyle(CircularProgressViewStyle(tint: Color.green))
+                                        .scaleEffect(2)
+                                        .padding(.vertical)
+                                        .onAppear(perform: {
+                                            print("Fetch Data from (BOTTOM SWIPE)")
+                                            dataVM.isLoad = true
+                                            dataVM.fetchData()
+                                            print("GROD")
+                                        })
+                                } else {
+                                    GeometryReader { reader -> Color in
+                                        let minY = reader.frame(in: .global).minY
+                                        
+                                        let height = UIScreen.main.bounds.height / 1.3
+                                        
+                                        if !dataVM.dataResponse.isEmpty && minY < height {
+                                            
+                                            print("Last data...")
+                                            
+                                            DispatchQueue.main.async {
+                                                dataVM.offset = dataVM.dataResponse.count
                                             }
                                         }
-                                )
-                                .padding(.horizontal, 20)
-                                .onChange(of: scrollToTop) { _, _ in
-                                    withAnimation {
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                                            reader.scrollTo(1, anchor: .center)
-                                            scrollToTop.toggle()
-                                        }
+                                        
+                                        return Color.clear
                                     }
+                                    .frame(width: 20, height: 20)
                                 }
                             }
                         }
                     }
                 }
-                .gesture(
-                    DragGesture(minimumDistance: 1.0, coordinateSpace: .local)
-                        .onEnded { value in
-                            print(value.translation)
-                            switch(value.translation.width, value.translation.height) {
-                                case (...0, -30...30):
-                                    print("left swipe")
-                                case (0..., -30...30):
-                                    print("right swipe")
-                                case (-100...100, ...0):
-                                    dataVM.isLoad = true
-                                    dataVM.fetchData()
-                                    print("GROD")
-                                    print("up swipe")
-                                case (-100...100, 0...):
-                                    print("down swipe")
-                                default:  print("no clue")
-                            }
-                        }
-                )
                 .background(Color.black)
                 .padding(.top, 1)
                 
-                if dataVM.isLoad {
-                    Color.black.opacity(0.5).ignoresSafeArea(edges: .all)
-                    
-                    ProgressView()
-                        .progressViewStyle(CircularProgressViewStyle(tint: Color.red))
-                        .scaleEffect(4)
-                }
+//                if dataVM.isLoad {
+//                    Color.black.opacity(0.5).ignoresSafeArea(edges: .all)
+//                    
+//                    ProgressView()
+//                        .progressViewStyle(CircularProgressViewStyle(tint: Color.red))
+//                        .scaleEffect(4)
+//                }
             }
             .onAppear(perform: {
                 dataVM.isLoad = true
@@ -166,5 +143,5 @@ struct ListView: View {
 }
 
 #Preview {
-    ListView()
+    ListView2()
 }

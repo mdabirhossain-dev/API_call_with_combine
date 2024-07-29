@@ -78,8 +78,10 @@ struct SeriesCellView: View {
                     }
                     
                     Button {
-                        if let index = self.dataVM.dataResponse.firstIndex(of: data) {
-                            self.dataVM.dataResponse.remove(at: index)
+                        withAnimation {
+                            if let index = self.dataVM.dataResponse.firstIndex(of: data) {
+                                self.dataVM.dataResponse.remove(at: index)
+                            }
                         }
                         
                         print("Delete button tapped...")

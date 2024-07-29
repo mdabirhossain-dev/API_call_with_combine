@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		101D425C2C47DB2400ABCA90 /* CategoryButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */; };
+		106CA8A32C574D1B00D2A886 /* ListView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 106CA8A22C574D1B00D2A886 /* ListView2.swift */; };
 		109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */; };
 		109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 109D4AEA2C46D02E00C34C38 /* ContentView.swift */; };
 		109D4AED2C46D03000C34C38 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 109D4AEC2C46D03000C34C38 /* Assets.xcassets */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		101D425B2C47DB2400ABCA90 /* CategoryButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButtonStyle.swift; sourceTree = "<group>"; };
+		106CA8A22C574D1B00D2A886 /* ListView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView2.swift; sourceTree = "<group>"; };
 		109D4AE52C46D02E00C34C38 /* Toffee.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Toffee.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		109D4AE82C46D02E00C34C38 /* ToffeeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToffeeApp.swift; sourceTree = "<group>"; };
 		109D4AEA2C46D02E00C34C38 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				109D4B002C46D3B300C34C38 /* NotificationView.swift */,
 				109D4AFE2C46D34400C34C38 /* ProfileView.swift */,
 				109D4AFC2C46D32800C34C38 /* SearchView.swift */,
+				106CA8A22C574D1B00D2A886 /* ListView2.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -223,6 +226,7 @@
 				109D4AFD2C46D32800C34C38 /* SearchView.swift in Sources */,
 				109D4AEB2C46D02E00C34C38 /* ContentView.swift in Sources */,
 				109D4B012C46D3B300C34C38 /* NotificationView.swift in Sources */,
+				106CA8A32C574D1B00D2A886 /* ListView2.swift in Sources */,
 				109D4AE92C46D02E00C34C38 /* ToffeeApp.swift in Sources */,
 				10A73EAA2C495A87008EE173 /* DataViewModel.swift in Sources */,
 				10E52AEB2C5176D700A20073 /* SeriesCellView.swift in Sources */,

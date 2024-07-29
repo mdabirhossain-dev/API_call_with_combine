@@ -11,6 +11,7 @@ import Combine
 
 class DataViewModel: ObservableObject {
     var lastArrPosition = 0
+    @Published var offset: Int = 0
     @Published var dataResponse: [DataResponse] = []
     @Published var categories: [String] = ["All"]
     @Published var isLoad = false
