@@ -25,12 +25,19 @@ struct MenuButton: View {
 }
 
 struct MenuButtonStyle: ButtonStyle {
+    
+    var menuWdith: CGFloat  =  140
+    var buttonHeight: CGFloat  =  36
+    let backgroundColor = Color(red: 41/255, green: 70/255, blue: 107/255)
+    
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .foregroundColor(.white)
-            .font(.system(size: 14))
-            .frame(width: 150, height: 36, alignment: .leading)
-            .padding(.leading)
-            .background(configuration.isPressed ? Color.white.opacity(0.7) : Color.gray)
+            .font(.system(size: 12))
+//            .frame(width: 150, height: 36, alignment: .leading)
+//            .padding(.leading)
+            .padding(.horizontal, 14)
+            .frame(width: menuWdith, height: buttonHeight, alignment: .leading)
+            .background(configuration.isPressed ? .white.opacity(0.2) : backgroundColor)
     }
 }

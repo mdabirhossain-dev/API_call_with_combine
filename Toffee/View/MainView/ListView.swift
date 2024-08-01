@@ -21,6 +21,8 @@ struct ListView: View {
     
     @State private var scrollToTop = false
     
+    @State private  var hideDropdown =  false
+    
     var filteredData: [DataResponse] {
         withAnimation {
             if selectedCategory == "All" {

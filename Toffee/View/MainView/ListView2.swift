@@ -21,6 +21,8 @@ struct ListView2: View {
     
     @State private var scrollToTop = false
     
+//    @State private  var hideDropdown = true
+    
     var filteredData: [DataResponse] {
         withAnimation {
             if selectedCategory == "All" {
@@ -122,6 +124,17 @@ struct ListView2: View {
 //                        .progressViewStyle(CircularProgressViewStyle(tint: Color.red))
 //                        .scaleEffect(4)
 //                }
+                
+                if DropDown.shared.showDropdown {
+                    Color.black.opacity(0.5)
+                        .edgesIgnoringSafeArea(.all)
+                        .onTapGesture {
+//                            hideDropdown = true
+                            DropDown.shared.showDropdown = false
+                            NotificationCenter.default.post(name: .menuNotification, object: nil, userInfo: ["status" : false])
+//                            print("1showDropdown: \(hideDropdown)")
+                        }
+                }
             }
             .onAppear(perform: {
                 dataVM.isLoad = true
@@ -144,4 +157,10 @@ struct ListView2: View {
 
 #Preview {
     ListView2()
+}
+
+
+class DropDown: ObservableObject {
+    static let shared = DropDown()
+    @Published var showDropdown = true
 }

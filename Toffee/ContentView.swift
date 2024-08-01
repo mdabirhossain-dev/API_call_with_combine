@@ -11,6 +11,10 @@ struct ContentView: View {
     
     @StateObject var dataVM = DataViewModel()
     
+    let fruits = ["apple", "banana", "orange", "kiwi"]
+    @State  private  var selectedOptionIndex =  0
+    @State  private  var showDropdown =  false
+    
     var body: some View {
         NavigationView {
             VStack(spacing: 30) {
@@ -20,6 +24,13 @@ struct ContentView: View {
                 NavigationLink(destination: ListView2().environmentObject(dataVM), label: {
                     Text("Swipe up to load")
                 })
+                
+                DropDownMenu(dataName: "No Name", showDropdown: $showDropdown)
+                
+                
+                
+                DropDownMenu(dataName: "No Name", showDropdown: $showDropdown)
+                    .padding(.top, 40)
             }
             .font(.title)
         }
